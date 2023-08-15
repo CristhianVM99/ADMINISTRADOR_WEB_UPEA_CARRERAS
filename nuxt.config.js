@@ -7,7 +7,7 @@ export default {
     -contiene el modo de despliegue para el mismo ya sea "static" o "server"
   ====================================*/
 
-  target: 'universal',
+  target: 'server',
 
   head: {
     title: "UPEA | Universidad Publica de El Alto. ",
