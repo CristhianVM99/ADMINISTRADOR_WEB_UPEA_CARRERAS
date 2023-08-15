@@ -35,6 +35,10 @@ CRISTHIAN VILLCA MAMANI - CRISMASVM
 
 linkedin https://www.linkedin.com/in/cristhian-villca-mamani-06933b251/
 
+IMPLEMENTACION DE LA PLANTILLA 
+
+Link : https://vie-vue.vercel.app/
+
 
 ## Instalación
 
@@ -55,6 +59,6 @@ para hacer un despliegue del proyecto usar el siguiente comando
 ```bash
 
   npm run dev
-  
+
 ```
 
