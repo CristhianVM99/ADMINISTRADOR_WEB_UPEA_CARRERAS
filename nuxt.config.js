@@ -8,7 +8,6 @@ export default {
   ====================================*/
 
   target: 'server',
-  mode: 'universal',
 
   head: {
     title: "UPEA | Universidad Publica de El Alto. ",
@@ -102,4 +101,5 @@ export default {
 
   // ubicacion para el almacenamiento de la dist
   buildDir: "dist",
+  //generate: { fallback: true }
 };

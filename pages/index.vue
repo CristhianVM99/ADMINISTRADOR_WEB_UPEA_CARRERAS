@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="menu_config" :style="{ left: menuPosition }" id="menu_config">
+    <!-- controller -->
+    <div
+      v-if="false"
+      class="menu_config"
+      :style="{ left: menuPosition }"
+      id="menu_config"
+    >
       <button @click="toggleMenu" class="close">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,14 +31,6 @@
         <!--<img style="width: 100px;" :src="url_api + '/InstitucionUpea/' + institucion_logo" alt="">-->
         <p class="notificationPara">Configuracion de la Pagina</p>
         <div class="buttonContainer">
-          <!-- index -->
-          <!-- <button @click="cambiarIndex(1)" class="AllowBtn">Index 1</button> -->
-          <!--<button @click="cambiarIndex(2)" class="AllowBtn">Index 2</button>
-          <button @click="cambiarIndex(3)" class="AllowBtn">Index 3</button>
-          <button @click="cambiarIndex(5)" class="AllowBtn">Index 5</button>
-          <button @click="cambiarIndex(7)" class="AllowBtn">Index 7</button>
-          <button @click="cambiarIndex(8)" class="AllowBtn">Index 8</button>-->
-
           <!-- autoridades -->
           <button
             @click="toggleAutoridades1"
@@ -117,7 +115,11 @@
         </div>
       </div>
     </div>
-    <!-- ======================== NAVBAR ====================== -->
+    <!-- ============================================================
+
+        NAVBAR 
+
+    =============================================================== -->
 
     <!-- 1 -->
     <Navbar ref="navbar" lr="logoRef" v-if="index == 1" />
@@ -132,38 +134,60 @@
     <!-- 8 -->
     <NavbarArch ref="navbar" v-if="index == 8" />
 
-    <!-- ======================== BANNER ======================= -->
+    <!-- ============================================================
 
-    <!-- 1 -->
+        BANNER PRINCIPAL
+
+    =============================================================== -->
+
+    <!-- index 1 -->
     <IntroWithSlider ref="fixedSlider" v-if="index == 1" />
-    <!-- 2 -->
+    <!-- index 2 -->
     <Intro2 v-if="index == 2" />
-    <!-- 3 -->
+    <!-- index 3 -->
     <Intro3 v-if="index == 3" />
-    <!-- 5 -->
+    <!-- index 5 -->
     <Intro4 theme="light" v-if="index == 5" />
-    <!-- 6 -->
+    <!-- index 6 -->
     <IntroWithSlider ref="fixedSlider" v-if="index == 6" />
-    <!-- 7 -->
+    <!-- index 7 -->
     <FreelancreIntro v-if="index == 7" />
-    <!-- 8 -->
+    <!-- index 8 -->
     <Intro5 v-if="index == 8" />
 
-    <!-- ======================== CONTENT ====================== -->
     <div class="main-content" ref="MainContent">
-      <!-- Autoridades -->
+      <!-- ============================================================
+
+        AUTORIDADES
+
+      =============================================================== -->
+
       <Blogs1 v-if="mostrarAutoridades1" tipo="autoridades" />
       <Blogs3 v-if="mostrarAutoridades2" tipo="autoridades" />
 
-      <!-- seccion del video de la carrera-->
+      <!-- ============================================================
+
+        VIDEO INSTTIUCIONAL
+
+      =============================================================== -->
+
       <VideoWithTestimonials v-if="mostrarVideo1" />
       <div style="height: 50px" v-if="mostrarVideo1"></div>
       <Video v-if="mostrarVideo2" />
 
-      <!-- organigrama carrera -->
+      <!-- ============================================================
+
+        ORGANIGRAMA
+
+      =============================================================== -->
+
       <CallToAction v-if="true" />
 
-      <!-- fotos intermedio -->
+      <!-- ============================================================
+
+        IMAGEN INTEMEDIO - 1
+
+      =============================================================== -->
       <div
         v-if="foto != null && Object.keys(foto).length != 0"
         :style="`background-image: url(${
@@ -175,12 +199,21 @@
       </div>
       <div v-else class="intermedio"></div>
 
-      <!-- CONVOCATORIAS -->
+      <!-- ============================================================
+
+        CONVOCATORIAS
+
+        =============================================================== -->
+
       <Blogs1 v-if="mostrarConvocatorias1" tipo="convocatorias" />
       <Blogs2 v-if="mostrarConvocatorias2" tipo="convocatorias" />
       <Blogs3 v-if="mostrarConvocatorias3" tipo="convocatorias" />
 
-      <!-- fotos intermedio -->
+      <!-- ============================================================
+
+        IMAGEN INTERMEDIO - 2
+
+        =============================================================== -->
       <div
         v-if="foto != null && Object.keys(foto).length != 0"
         :style="`background-image: url(${
@@ -193,12 +226,22 @@
       </div>
       <div v-else class="intermedio"></div>
 
-      <!-- CURSOS -->
+      <!-- ============================================================
+
+          CURSOS
+
+        =============================================================== -->
+
       <Blogs1 v-if="mostrarCursos1" tipo="cursos" />
       <Blogs2 v-if="mostrarCursos2" tipo="cursos" />
       <Blogs3 v-if="mostrarCursos3" tipo="cursos" />
 
-      <!-- enlace de paginas web -->
+      <!-- ============================================================
+
+        ENLACES 
+
+        =============================================================== -->
+
       <Clients1 v-if="mostrarEnlaces1" theme="light" />
       <Clients2
         v-if="mostrarEnlaces2"
@@ -206,68 +249,13 @@
         :length="Object.keys(carrera_links).length"
       />
 
-      <!-- ================================== COMPONENTES POR VER ==========================-->
-      <!--<Services1 />
-      <Services1 oStyle="4item" />      
-      <Services1 lines />
-      <Services2 />
-      <Services3 />
-      <Services4 serviceMB50 />
-      <Services5 />
-      <Services6 />-->
+      <!-- ============================================================
 
-      <!-- about's -->
-      <!--<AboutUs1 />
-      <AboutUs2 />
-      <AboutUs3 />
-      <AboutUs4 />
-      <AboutUs5 />
-      <AboutUs6 />-->
+          FOOTER
 
-      <!-- <Blogs4 v-if="false"/>
+        =============================================================== -->
 
-      <Portfolio v-if="false" :grid="3" filterPosition="center" />
-      <Portfolio v-if="false" grid="2" filterPosition="left" />
-      
-      <FullTestimonials v-if="false" noPadding />
-      <FullTestimonials v-if="false" withCOLOR />
-      <FullTestimonials v-if="false" classText="pb-0" />
-      <FullTestimonials v-if="false" />
-      <FullTestimonials v-if="false" showHead />
-
-      <TestimonialsArcho v-if="false"/>
-
-      <Team1 v-if="false" />
-      <Team2 v-if="false" theme="light" />
-      <Team3 v-if="false" />
-
-      <CallToAction v-if="false" img="/img/patrn1.png" />
-
-      <Works1 v-if="false" />
-      <Works2 v-if="false" />
-      <Works3 v-if="false" />
-      <Works4 v-if="false" classText="blackFilterColor" />
-      <Works5 v-if="false" />
-      <Works6 v-if="false" />
-
-      <FunFacts1 v-if="false"/> 
-      <FunFacts2 v-if="false"/>   
-
-      <SkillsCircle v-if="false" theme="light" />
-
-      <SContactForm v-if="false" />
-      <SContactForm v-if="false" noLine />
-
-      <MinimalArea2 v-if="false"/>
-
-      <CaseStudy v-if="false"/>
-
-      <LatestNews v-if="false"/>
-      <ContactArcho v-if="false"/>
-       -->
       <Footer />
-      <!-- <Footer v-if="false" hideBGCOLOR />-->
-      <!-- <FooterArch v-if="true"/>  -->
     </div>
   </div>
 </template>
@@ -281,82 +269,63 @@ export default {
   async asyncData({ $axios }) {
     try {
       const useInstitucion = useInstitucionStore();
-      const institucion = await $axios.$get(
-        "/api/InstitucionUPEA/" + process.env.APP_ID_INSTITUCION
-      );
-      const carrera_links_externos = await $axios.$get(
-        "/api/linksIntExtAll/" + process.env.APP_ID_INSTITUCION
-      );
-      const ComunicadosFilter = await $axios.$get(
-        "/api/convocatoriasAll/" + process.env.APP_ID_CARRERA
-      );
-      const CursosFilter = await $axios.$get(
-        "/api/cursosAll/" + process.env.APP_ID_CARRERA
-      );
-      const carrera_servicios = await $axios.$get(
-        "/api/ServicioAll/" + process.env.APP_ID_CARRERA
-      );
-      const carrera_ofertasacademicas = await $axios.$get(
-        "/api/OfertasAcademicasAll/" + process.env.APP_ID_CARRERA
-      );
-      const carrera_publicaciones = await $axios.$get(
-        "/api/publicacionesAll/" + process.env.APP_ID_INSTITUCION
-      );
-      const carrera_gacetas = await $axios.$get(
-        "/api/gacetaunivAll/" + process.env.APP_ID_INSTITUCION
-      );
-      const carrera_eventos = await $axios.$get(
-        "/api/eventoAll/" + process.env.APP_ID_INSTITUCION
-      );
-      const carrera_videos = await $axios.$get(
-        "/api/VideosAll/" + process.env.APP_ID_INSTITUCION
-      );
+      if (useInstitucionStore().institucion == null) {
+        const institucion = await $axios.$get("/api/InstitucionUPEA/" + process.env.APP_ID_INSTITUCION);
+        useInstitucion.asignarInstitucion(institucion.Descripcion);
+        let fotosPagina = institucion.Descripcion.portada.filter((port) => port.portada_titulo === "PAGINA");
+        let fotosPortada = institucion.Descripcion.portada.filter((port) => port.portada_titulo != "PAGINA");
+        
+        useInstitucion.asignarFotosPagina(fotosPagina);
+        useInstitucion.asignarFotosPortada(fotosPortada);
+      }
+      if (useInstitucionStore().carrera_links_externos== null) {
+        const carrera_links_externos = await $axios.$get("/api/linksIntExtAll/" + process.env.APP_ID_INSTITUCION);
+        useInstitucion.asignarCarreraLinksExternos(carrera_links_externos);
+      }
+      if(useInstitucionStore().carrera_convocatoria == null || useInstitucionStore().carrera_avisos == null || useInstitucionStore().carrera_comunicados == null){
+        const ComunicadosFilter = await $axios.$get("/api/convocatoriasAll/" + process.env.APP_ID_CARRERA);
+        let carrera_ConvocatoriasAll = ComunicadosFilter.filter((conv) => conv.tipo_conv_comun.tipo_conv_comun_estado === "1");
+        let comunicados = carrera_ConvocatoriasAll.filter((conv) => conv.tipo_conv_comun.tipo_conv_comun_titulo === "COMUNICADOS");
+        let convocatorias = carrera_ConvocatoriasAll.filter((conv) =>conv.tipo_conv_comun.tipo_conv_comun_titulo === "CONVOCATORIAS");
+        let avisos = carrera_ConvocatoriasAll.filter((conv) => conv.tipo_conv_comun.tipo_conv_comun_titulo === "AVISOS");
 
-      let fotosPagina = institucion.Descripcion.portada.filter(
-        (port) => port.portada_titulo === "PAGINA"
-      );
-      let fotosPortada = institucion.Descripcion.portada.filter(
-        (port) => port.portada_titulo != "PAGINA"
-      );
-      let carrera_ConvocatoriasAll = ComunicadosFilter.filter(
-        (conv) => conv.tipo_conv_comun.tipo_conv_comun_estado === "1"
-      );
-      let carrera_CursosAll = CursosFilter.filter(
-        (cur) => cur.det_estado === "1"
-      );
+        useInstitucion.asignarConvocatorias(convocatorias);
+        useInstitucion.asignarComunicados(comunicados);
+        useInstitucion.asignarAvisos(avisos);
+      }
 
-      let comunicados = carrera_ConvocatoriasAll.filter(
-        (conv) => conv.tipo_conv_comun.tipo_conv_comun_titulo === "COMUNICADOS"
-      );
-      let convocatorias = carrera_ConvocatoriasAll.filter(
-        (conv) =>
-          conv.tipo_conv_comun.tipo_conv_comun_titulo === "CONVOCATORIAS"
-      );
-      let avisos = carrera_ConvocatoriasAll.filter(
-        (conv) => conv.tipo_conv_comun.tipo_conv_comun_titulo === "AVISOS"
-      );
-      let cursos = carrera_CursosAll.filter(
-        (cur) => cur.tipo_curso_otro.tipo_conv_curso_nombre === "CURSOS"
-      );
-      let seminarios = carrera_CursosAll.filter(
-        (cur) => cur.tipo_curso_otro.tipo_conv_curso_nombre === "SEMINARIOS"
-      );
+      if(useInstitucionStore().carrera_cursos == null || useInstitucionStore().carrera_seminarios == null){
+        const CursosFilter = await $axios.$get("/api/cursosAll/" + process.env.APP_ID_CARRERA);
+        let carrera_CursosAll = CursosFilter.filter((cur) => cur.det_estado === "1");        
+        let cursos = carrera_CursosAll.filter((cur) => cur.tipo_curso_otro.tipo_conv_curso_nombre === "CURSOS");
+        let seminarios = carrera_CursosAll.filter((cur) => cur.tipo_curso_otro.tipo_conv_curso_nombre === "SEMINARIOS");
 
-      useInstitucion.asignarCarreraLinksExternos(carrera_links_externos);
-      useInstitucion.asignarInstitucion(institucion.Descripcion);
-      useInstitucion.asignarConvocatorias(convocatorias);
-      useInstitucion.asignarComunicados(comunicados);
-      useInstitucion.asignarAvisos(avisos);
-      useInstitucion.asignarCursos(cursos);
-      useInstitucion.asignarSeminarios(seminarios);
-      useInstitucion.asignarServicios(carrera_servicios);
-      useInstitucion.asignarOfertasAcademicas(carrera_ofertasacademicas);
-      useInstitucion.asignarPublicaciones(carrera_publicaciones);
-      useInstitucion.asignarGacetas(carrera_gacetas);
-      useInstitucion.asignarEventos(carrera_eventos);
-      useInstitucion.asignarVideos(carrera_videos);
-      useInstitucion.asignarFotosPagina(fotosPagina);
-      useInstitucion.asignarFotosPortada(fotosPortada);
+        useInstitucion.asignarCursos(cursos);
+        useInstitucion.asignarSeminarios(seminarios);
+      }
+      
+      if(
+        useInstitucionStore().carrera_servicios == null ||
+        useInstitucionStore().carrera_ofertasacademicas == null|| 
+        useInstitucionStore().carrera_publicaciones == null ||
+        useInstitucionStore().carrera_gacetas == null ||
+        useInstitucionStore().carrera_eventos == null ||
+        useInstitucionStore().carrera_videos == null
+        ){
+        const carrera_servicios = await $axios.$get("/api/ServicioAll/" + process.env.APP_ID_CARRERA);
+        const carrera_ofertasacademicas = await $axios.$get("/api/OfertasAcademicasAll/" + process.env.APP_ID_CARRERA);
+        const carrera_publicaciones = await $axios.$get("/api/publicacionesAll/" + process.env.APP_ID_INSTITUCION);
+        const carrera_gacetas = await $axios.$get("/api/gacetaunivAll/" + process.env.APP_ID_INSTITUCION);
+        const carrera_eventos = await $axios.$get("/api/eventoAll/" + process.env.APP_ID_INSTITUCION);
+        const carrera_videos = await $axios.$get("/api/VideosAll/" + process.env.APP_ID_INSTITUCION);
+
+        useInstitucion.asignarServicios(carrera_servicios);
+        useInstitucion.asignarOfertasAcademicas(carrera_ofertasacademicas);
+        useInstitucion.asignarPublicaciones(carrera_publicaciones);
+        useInstitucion.asignarGacetas(carrera_gacetas);
+        useInstitucion.asignarEventos(carrera_eventos);
+        useInstitucion.asignarVideos(carrera_videos); 
+      }                 
     } catch (e) {
       console.error("error", e);
     }
@@ -678,12 +647,14 @@ export default {
   background-size: cover;
   background-attachment: fixed;
 }
+
 .menu_config {
   position: fixed;
   top: 50%;
   z-index: 1000;
   transform: translateY(-50%);
 }
+
 .notificationCard {
   width: 220px;
   background: rgb(245, 245, 245);
@@ -764,9 +735,11 @@ export default {
   padding-bottom: none;
   outline: none;
 }
+
 .foto_number {
   position: relative;
 }
+
 .foto_number_content {
   background: transparent;
   position: absolute;
@@ -775,6 +748,7 @@ export default {
   bottom: 0;
   right: 0;
 }
+
 .foto_number_content:hover::before {
   position: absolute;
   content: attr(num_img);
