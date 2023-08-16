@@ -8,6 +8,9 @@ export default {
   ====================================*/
 
   target: 'server',
+  server:{
+    port: 443,
+  },
 
   head: {
     title: "UPEA | Universidad Publica de El Alto. ",
