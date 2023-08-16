@@ -8,6 +8,7 @@ export default {
   ====================================*/
 
   target: 'server',
+  mode: 'universal',
 
   head: {
     title: "UPEA | Universidad Publica de El Alto. ",
