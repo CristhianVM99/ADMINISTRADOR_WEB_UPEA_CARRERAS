@@ -144,6 +144,10 @@ export const useInstitucionStore = defineStore("Institucion", {
     title_trabajos_dirigidos: 'Trabajos Dirigidos',
     content_trabajos_dirigidos: 'Los trabajos dirigidos ofrecen a los estudiantes la oportunidad de realizar investigaciones y proyectos individuales o en grupos reducidos. Bajo la orientación de profesores expertos, los estudiantes pueden explorar áreas específicas de interés, profundizar en temas relevantes y presentar resultados originales. Los trabajos dirigidos fomentan la creatividad y el pensamiento crítico.',
 
+    // instituto de investigacion
+    title_instituto_de_investigacion: 'Instituto De Investigacion',
+    content_instituto_de_investigacion: 'El instituto de investigación es una organización dedicada a la exploración sistemática y la generación de conocimiento en diversos campos del saber. Estas instituciones se centran en la investigación científica, tecnológica, social o humanística, y su objetivo principal es avanzar en la comprensión de fenómenos, resolver problemas o desarrollar nuevas tecnologías. Los institutos de investigación suelen contar con equipos multidisciplinarios de investigadores, laboratorios especializados, financiamiento para proyectos y colaboraciones con otras instituciones académicas y empresas. Su contribución a la sociedad radica en la generación de innovaciones, la promoción del avance científico y la mejora de la calidad de vida a través de descubrimientos y desarrollos relevantes.',
+
   }),
 
   /* ===============================================================

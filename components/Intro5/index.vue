@@ -19,7 +19,7 @@
             })`"
             data-overlay-dark="6"
           >
-            <div class="container content_title" style="padding-bottom: 40px">
+            <div class="container content_title" style="padding-bottom: 40px; overflow: hidden">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="caption mt-30">

@@ -151,6 +151,12 @@
               >
                 Trabajos Dirigidos
               </NuxtLink>
+              <NuxtLink
+                class="dropdown-item"
+                to="/institucion/institutodeinvestigacion"
+              >
+                Instituto de Investigacion.
+              </NuxtLink>
             </div>
           </li>
 
@@ -226,6 +232,10 @@
             class="nav-item dropdown"
             @mouseover="handleDropdown"
             @mouseout="handleDropdown"
+            v-if="
+              Object.keys(carrera_links.filter((e) => e.ei_tipo == 'BIBLIOTECA'))
+                .length != 0
+            "
           >
             <span
               class="nav-link dropdown-toggle"
@@ -238,23 +248,13 @@
               <a
                 class="dropdown-item"
                 target="_blank"
-                href="http://mibiblioteca.upea.bo/"
+                :href="link.ei_link"
+                v-for="(link, id_link) in carrera_links.filter(
+                  (e) => e.ei_tipo == 'BIBLIOTECA'
+                )"
+                :key="id_link"
               >
-                Biblioteca Virtual
-              </a>
-              <a
-                class="dropdown-item"
-                target="_blank"
-                href="https://biblioteca.upea.bo/"
-              >
-                Biblioteca Upea
-              </a>
-              <a
-                class="dropdown-item"
-                target="_blank"
-                href="http://repositorio.upea.bo/"
-              >
-                Repositorio
+                {{ link.ei_nombre }}
               </a>
             </div>
           </li>

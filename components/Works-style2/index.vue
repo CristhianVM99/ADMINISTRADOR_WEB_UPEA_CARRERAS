@@ -35,18 +35,19 @@
             <div class="item-img">
               <NuxtLink
                 class="imago wow"
-                to="/project-details2/project-details2-dark"
+                :to="{ path: '/ConvocatoriasDetalle/gacetas', query: { id: encryptID(documento.gaceta_id) }}"
               >
                 <client-only v-if="
                 tipo == 'convenios'||
                 tipo == 'pasantias' || 
-                tipo == 'trabajosdirigidos'
+                tipo == 'trabajosdirigidos' ||
+                tipo == 'institutodeinvestigacion'
                  && documento!= 0">
                   <pdf-embed
                     :source="url_api + '/Gaceta/' + documento.gaceta_documento"
                     :page="1"
                   />
-                </client-only>
+                </client-only>                
                 <div class="item-img-overlay"></div>
               </NuxtLink>
             </div>
@@ -56,7 +57,33 @@
                 Descargar PDF
               </a>
             </div>
-          </div>
+          </div>          
+        </div>
+        <div v-if="documentos != 0" class="gallery full-width">
+          <div
+            :class="`${
+              grid === 3
+                ? 'col-lg-4 col-md-6'
+                : grid === 2
+                ? 'col-md-6'
+                : 'col-12'
+            } items graphic wow fadeInUp`"
+            data-wow-delay=".4s"
+            v-for="(publicacion, publicacion_id) in colection" :key="publicacion_id"
+          >
+            <div class="item-img">
+              <NuxtLink
+                class="imago wow"
+                :to="{ path: '/ConvocatoriasDetalle/publicaciones', query: { id: encryptID(publicacion.publicaciones_id) }}"
+              >
+                <img v-if="tipo=='institutodeinvestigacion'" :src="url_api + '/Publicaciones/' + publicacion.publicaciones_imagen" alt="" />               
+                <div class="item-img-overlay"></div>
+              </NuxtLink>
+            </div>
+            <div class="cont">
+              <h6 v-if="tipo=='institutodeinvestigacion'" >{{ publicacion.publicaciones_titulo }}</h6>              
+            </div>
+          </div>          
 
           
         </div>
@@ -68,9 +95,10 @@
 
 <script>
 import initIsotope from "../../common/initIsotope";
+import CryptoJS from 'crypto-js'
 
 export default {
-  props: ["grid", "filterPosition", "hideFilter","title","content","carrera","documentos","tipo"],
+  props: ["grid", "filterPosition", "hideFilter","title","content","carrera","documentos","tipo","colection"],
   data() {
     return {
       url_api : process.env.APP_ROOT_API,
@@ -78,6 +106,13 @@ export default {
   },
   created() {
     console.log("documentos",this.documentos)
+  },
+  methods: {
+    encryptID(id) {
+      const encryptionKey = 'UniversidadPublicaDeElAlto' // Cambia esto por tu clave de encriptación
+      const ciphertext = CryptoJS.AES.encrypt(id.toString(), encryptionKey).toString()
+      return ciphertext
+    },  
   },
   mounted() {
     setTimeout(() => {

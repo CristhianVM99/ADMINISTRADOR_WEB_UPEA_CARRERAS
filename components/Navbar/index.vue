@@ -160,6 +160,12 @@
               >
                 Trabajos Dirigidos
               </NuxtLink>
+              <NuxtLink
+                class="dropdown-item"
+                to="/institucion/institutodeinvestigacion"
+              >
+                Instituto de Investigacion.
+              </NuxtLink>
             </div>
           </li>
           <li
@@ -228,19 +234,18 @@
                 )"
                 :key="id_link"
               >
-                {{ link.ei_nombre ? link.ei_nombre : "Sin Links" }}
+                {{ link.ei_nombre }}
               </a>
             </div>
-          </li>
-          <!--<li class="nav-item">
-            <NuxtLink class="nav-link" to="/contact/contact-light">
-              Contacto
-            </NuxtLink>
-          </li>-->
+          </li>          
           <li
             class="nav-item dropdown"
             @mouseover="handleDropdown"
             @mouseout="handleDropdown"
+            v-if="
+              Object.keys(carrera_links.filter((e) => e.ei_tipo == 'BIBLIOTECA'))
+                .length != 0
+            "
           >
             <span
               class="nav-link dropdown-toggle"
@@ -255,23 +260,13 @@
               <a
                 class="dropdown-item"
                 target="_blank"
-                href="http://mibiblioteca.upea.bo/"
+                :href="link.ei_link"
+                v-for="(link, id_link) in carrera_links.filter(
+                  (e) => e.ei_tipo == 'BIBLIOTECA'
+                )"
+                :key="id_link"
               >
-                Biblioteca Virtual
-              </a>
-              <a
-                class="dropdown-item"
-                target="_blank"
-                href="https://biblioteca.upea.bo/"
-              >
-                Biblioteca Upea
-              </a>
-              <a
-                class="dropdown-item"
-                target="_blank"
-                href="http://repositorio.upea.bo/"
-              >
-                Repositorio
+                {{ link.ei_nombre }}
               </a>
             </div>
           </li>
@@ -293,7 +288,7 @@ export default {
       url_api: process.env.APP_ROOT_API,
       carrera_logo: useInstitucionStore().institucion.institucion_logo,
       carrera_nombre: useInstitucionStore().institucion.institucion_nombre,
-      carrera_links: useInstitucionStore().carrera_links_externos,
+      carrera_links: useInstitucionStore().carrera_links_externos,      
     };
   },
   methods: {

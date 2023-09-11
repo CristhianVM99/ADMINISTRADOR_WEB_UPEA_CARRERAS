@@ -23,7 +23,7 @@
               <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
                   <div class="caption center mt-30">
-                    <h1 class="banner_title" style="font-size: 6em">
+                    <h1 class="banner_title bannerIntroWithSlider">
                       {{ carrera_nombre }}
                     </h1>
                     <p>
