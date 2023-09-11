@@ -16,10 +16,10 @@
             class="bg-img valign"
             :style="`background-image: url(${
               url_api + '/InstitucionUpea/Portada/' + port.portada_imagen
-            })`"
+            });overflow: hidden`"
             data-overlay-dark="6"
           >
-            <div class="container content_title" style="padding-bottom: 40px; overflow: hidden">
+            <div class="container content_title" style="padding-bottom: 40px;">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="caption mt-30">
