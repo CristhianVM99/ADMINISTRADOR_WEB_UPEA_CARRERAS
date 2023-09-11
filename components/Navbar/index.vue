@@ -43,6 +43,9 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <NuxtLink class="nav-link" to="/"> Inicio </NuxtLink>
+          </li>
           <li
             class="nav-item dropdown"
             @mouseover="handleDropdown"
@@ -222,7 +225,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Kardex
+              Virtual
             </span>
             <div class="dropdown-menu">
               <a
@@ -237,14 +240,15 @@
                 {{ link.ei_nombre }}
               </a>
             </div>
-          </li>          
+          </li>
           <li
             class="nav-item dropdown"
             @mouseover="handleDropdown"
             @mouseout="handleDropdown"
             v-if="
-              Object.keys(carrera_links.filter((e) => e.ei_tipo == 'BIBLIOTECA'))
-                .length != 0
+              Object.keys(
+                carrera_links.filter((e) => e.ei_tipo == 'BIBLIOTECA')
+              ).length != 0
             "
           >
             <span
@@ -288,7 +292,7 @@ export default {
       url_api: process.env.APP_ROOT_API,
       carrera_logo: useInstitucionStore().institucion.institucion_logo,
       carrera_nombre: useInstitucionStore().institucion.institucion_nombre,
-      carrera_links: useInstitucionStore().carrera_links_externos,      
+      carrera_links: useInstitucionStore().carrera_links_externos,
     };
   },
   methods: {

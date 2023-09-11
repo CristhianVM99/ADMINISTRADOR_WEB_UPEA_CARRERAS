@@ -39,6 +39,9 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <NuxtLink class="nav-link" to="/"> Inicio </NuxtLink>
+          </li>
           <li
             class="nav-item dropdown"
             @mouseover="handleDropdown"
@@ -211,7 +214,7 @@
               data-toggle="dropdown"
               data-scroll-nav="0"
             >
-              Kardex
+              Virtual
             </span>
             <div class="dropdown-menu">
               <a
@@ -233,8 +236,9 @@
             @mouseover="handleDropdown"
             @mouseout="handleDropdown"
             v-if="
-              Object.keys(carrera_links.filter((e) => e.ei_tipo == 'BIBLIOTECA'))
-                .length != 0
+              Object.keys(
+                carrera_links.filter((e) => e.ei_tipo == 'BIBLIOTECA')
+              ).length != 0
             "
           >
             <span

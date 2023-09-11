@@ -186,8 +186,10 @@ export default {
       title_trabajos_dirigidos: useInstitucionStore().title_trabajos_dirigidos,
       content_trabajos_dirigidos:
         useInstitucionStore().content_trabajos_dirigidos,
-      title_instituto_de_investigacion: useInstitucionStore().title_instituto_de_investigacion,
-      content_instituto_de_investigacion : useInstitucionStore().content_instituto_de_investigacion,
+      title_instituto_de_investigacion:
+        useInstitucionStore().title_instituto_de_investigacion,
+      content_instituto_de_investigacion:
+        useInstitucionStore().content_instituto_de_investigacion,
       documento: null,
       colection: null,
       layout: 1,
@@ -294,12 +296,12 @@ export default {
           this.title = "Instituto De Investigacion";
           this.title_introduccion = this.title_instituto_de_investigacion;
           this.content_introduccion = this.content_instituto_de_investigacion;
-          this.documento = useInstitucionStore().carrera_gacetas.filter((e) =>
-            e.gaceta_titulo.includes("TRABAJO DIRIGIDO")
+          this.documento = useInstitucionStore().carrera_gacetas.filter(
+            (e) => e.gaceta_tipo === "DICyT"
           );
-          this.colection = useInstitucionStore().carrera_publicaciones.filter((e) => 
-            e.publicaciones_tipo === "INSTITUTO DE INVESTIGACIÓN",
-          )
+          this.colection = useInstitucionStore().carrera_publicaciones.filter(
+            (e) => e.publicaciones_tipo === "INSTITUTO DE INVESTIGACIÓN"
+          );
           this.layout = 2;
           break;
         default:

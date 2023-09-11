@@ -16,16 +16,23 @@
           </div>
         </div>
 
-        <div>
-          <client-only>
-            <pdf-embed
-              :source="url_api + '/InstitucionUpea/' + carrera_organigrama"
-              :page="1"
-            />
-          </client-only>
+        <div class="col-md-4 col-lg-6">
+          <a :href="url_api + '/InstitucionUpea/' + carrera_organigrama">
+            <client-only>
+              <pdf-embed
+                :source="url_api + '/InstitucionUpea/' + carrera_organigrama"
+                :page="1"
+              />
+              <img
+                :src="url_api + '/InstitucionUpea/' + carrera_organigrama"
+                :alt="carrera_organigrama"
+                style="width: 40%; height: 110%"
+              />
+            </client-only>
+          </a>
         </div>
 
-        <div class="col-md-4 col-lg-3 valign">
+        <div class="col-md-3 col-lg-3 valign">
           <a
             :href="url_api + '/InstitucionUpea/' + carrera_organigrama"
             target="_blank"
@@ -56,6 +63,9 @@ export default {
       carrera_iniciales:
         useInstitucionStore().institucion.institucion_iniciales,
     };
+  },
+  created() {
+    console.log("organigrama ", this.carrera_organigrama);
   },
 };
 </script>

@@ -18,8 +18,7 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">        
-
+      <div class="row">
         <div v-if="documentos != 0" class="gallery full-width">
           <div
             :class="`${
@@ -30,36 +29,46 @@
                 : 'col-12'
             } items graphic wow fadeInUp`"
             data-wow-delay=".4s"
-            v-for="(documento, documento_id) in documentos" :key="documento_id"
+            v-for="(documento, documento_id) in documentos"
+            :key="documento_id"
           >
             <div class="item-img">
               <NuxtLink
                 class="imago wow"
-                :to="{ path: '/ConvocatoriasDetalle/gacetas', query: { id: encryptID(documento.gaceta_id) }}"
+                :to="{
+                  path: '/ConvocatoriasDetalle/gacetas',
+                  query: { id: encryptID(documento.gaceta_id) },
+                }"
               >
-                <client-only v-if="
-                tipo == 'convenios'||
-                tipo == 'pasantias' || 
-                tipo == 'trabajosdirigidos' ||
-                tipo == 'institutodeinvestigacion'
-                 && documento!= 0">
+                <client-only
+                  v-if="
+                    tipo == 'convenios' ||
+                    tipo == 'pasantias' ||
+                    tipo == 'trabajosdirigidos' ||
+                    (tipo == 'institutodeinvestigacion' && documento != 0)
+                  "
+                >
                   <pdf-embed
                     :source="url_api + '/Gaceta/' + documento.gaceta_documento"
                     :page="1"
                   />
-                </client-only>                
+                </client-only>
                 <div class="item-img-overlay"></div>
               </NuxtLink>
             </div>
             <div class="cont">
               <h6>{{ documento.gaceta_titulo }}</h6>
-              <a target="_blank" :href="url_api + '/Gaceta/' + documento.gaceta_documento" class="butn bord curve mt-30">
+              <a
+                target="_blank"
+                :href="url_api + '/Gaceta/' + documento.gaceta_documento"
+                class="butn bord curve mt-30"
+              >
                 Descargar PDF
               </a>
             </div>
-          </div>          
+          </div>
         </div>
-        <div v-if="documentos != 0" class="gallery full-width">
+        <div v-if="colection != 0" class="gallery full-width">
           <div
             :class="`${
               grid === 3
@@ -69,25 +78,47 @@
                 : 'col-12'
             } items graphic wow fadeInUp`"
             data-wow-delay=".4s"
-            v-for="(publicacion, publicacion_id) in colection" :key="publicacion_id"
+            v-for="(publicacion, publicacion_id) in colection"
+            :key="publicacion_id"
           >
             <div class="item-img">
               <NuxtLink
                 class="imago wow"
-                :to="{ path: '/ConvocatoriasDetalle/publicaciones', query: { id: encryptID(publicacion.publicaciones_id) }}"
+                :to="{
+                  path: '/ConvocatoriasDetalle/publicaciones',
+                  query: { id: encryptID(publicacion.publicaciones_id) },
+                }"
               >
-                <img v-if="tipo=='institutodeinvestigacion'" :src="url_api + '/Publicaciones/' + publicacion.publicaciones_imagen" alt="" />               
+                <img
+                  v-if="tipo == 'institutodeinvestigacion'"
+                  :src="
+                    url_api +
+                    '/Publicaciones/' +
+                    publicacion.publicaciones_imagen
+                  "
+                  alt=""
+                />
                 <div class="item-img-overlay"></div>
               </NuxtLink>
             </div>
             <div class="cont">
-              <h6 v-if="tipo=='institutodeinvestigacion'" >{{ publicacion.publicaciones_titulo }}</h6>              
+              <h6 v-if="tipo == 'institutodeinvestigacion'">
+                {{ publicacion.publicaciones_titulo }}
+              </h6>
             </div>
-          </div>          
-
-          
+          </div>
         </div>
-        <h3 style="text-align: center; margin: 100px 0px;width: 100%;color: var(--color-secundario);" v-if="( documentos == 0)">No hay Registros</h3> 
+        <h3
+          style="
+            text-align: center;
+            margin: 100px 0px;
+            width: 100%;
+            color: var(--color-secundario);
+          "
+          v-if="documentos == 0 && colection == 0"
+        >
+          No hay Registros
+        </h3>
       </div>
     </div>
   </section>
@@ -95,24 +126,37 @@
 
 <script>
 import initIsotope from "../../common/initIsotope";
-import CryptoJS from 'crypto-js'
+import CryptoJS from "crypto-js";
 
 export default {
-  props: ["grid", "filterPosition", "hideFilter","title","content","carrera","documentos","tipo","colection"],
+  props: [
+    "grid",
+    "filterPosition",
+    "hideFilter",
+    "title",
+    "content",
+    "carrera",
+    "documentos",
+    "tipo",
+    "colection",
+  ],
   data() {
     return {
-      url_api : process.env.APP_ROOT_API,
-    }
+      url_api: process.env.APP_ROOT_API,
+    };
   },
   created() {
-    console.log("documentos",this.documentos)
+    console.log("documentos", this.documentos);
   },
   methods: {
     encryptID(id) {
-      const encryptionKey = 'UniversidadPublicaDeElAlto' // Cambia esto por tu clave de encriptación
-      const ciphertext = CryptoJS.AES.encrypt(id.toString(), encryptionKey).toString()
-      return ciphertext
-    },  
+      const encryptionKey = "UniversidadPublicaDeElAlto"; // Cambia esto por tu clave de encriptación
+      const ciphertext = CryptoJS.AES.encrypt(
+        id.toString(),
+        encryptionKey
+      ).toString();
+      return ciphertext;
+    },
   },
   mounted() {
     setTimeout(() => {
@@ -122,5 +166,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

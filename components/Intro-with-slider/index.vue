@@ -26,7 +26,7 @@
                     <h1 class="banner_title bannerIntroWithSlider">
                       {{ carrera_nombre }}
                     </h1>
-                    <p>
+                    <p class="banner_text">
                       {{ text_banner }}
                     </p>
                     <NuxtLink to="/categorias" class="butn bord curve mt-30">
@@ -130,7 +130,20 @@ export default {
 
 <style scoped>
 .banner_title {
-  text-shadow: 0px 15px 50px rgba(0, 0, 0, 0.9);
+  text-shadow: 0px 15px 30px rgba(0, 0, 0, 1);
   color: var(--color-secundario) !important;
+}
+.banner_text {
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9);
+  border-radius: 20px;
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .banner_title {
+    font-size: 6em !important;
+  }
+  .banner_text {
+    font-size: 1.5em !important;
+  }
 }
 </style>

@@ -1330,9 +1330,9 @@ span:hover {
 
 /* ====================== [ End Text Animation & Images ] ====================== */
 /* ====================== [ Start Cursor Style ] ====================== */
-body {
+/* body {
   cursor: none;
-}
+} */
 
 .mouse-cursor {
   position: fixed;
@@ -1895,7 +1895,7 @@ body {
 }
 
 .navbar .navbar-nav .nav-link {
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 500;
   color: #fff;
   padding: 15px 7px;
