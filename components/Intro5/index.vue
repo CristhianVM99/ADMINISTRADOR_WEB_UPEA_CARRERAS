@@ -21,34 +21,42 @@
           >
             <div class="container content_title" style="padding-bottom: 40px;">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                   <div class="caption mt-30">
-                    <h1>
-                      <div style="font-size: 0.5em">Carrera</div>
+                    <h1>                      
+                      <div style="font-size: 0.5em">Carrera </div>
                       <div
                         style="
                           color: var(--color-secundario);
                           margin-left: 40px;
                           background: rgba(0, 0, 0, , 5);
+                          display: flex;
                         "
-                        class="letter_intro5"
+                        class="letter_intro5 "
                       >
-                        {{ carrera_nombre.toUpperCase() }}
+                        {{ carrera_nombre.toUpperCase() }}                                              
                       </div>
                     </h1>
-                    <p>{{ text_banner }}</p>
-                  </div>
-                </div>
-                <div class="col-lg-4 valign">
-                  <div class="explore">
-                    <NuxtLink
+                    <p>
+                      {{ text_banner }}
+                      <NuxtLink
                       class="butn bord curve mt-30 btn_intro5"
                       style="background: var(--color-secundario)"
                       to="/categorias"
                     >
                       <span>Categorias <i class="ion-chevron-right"></i></span>
                     </NuxtLink>
+                      </p>                    
                   </div>
+                </div>
+                <div class="col-lg-5 valign icon_admin_logo">
+                  <img
+                    ref="lr"
+                    :src="url_api + '/InstitucionUpea/' + carrera_logo"
+                    alt="logo"
+                    class="icon_admin_logo_img1"
+                  />
+                  <img src="/img/universidad/acreditacion.png" alt="" class="icon_admin_logo_img2">
                 </div>
               </div>
             </div>
@@ -102,6 +110,7 @@ export default {
       },
       url_api: process.env.APP_ROOT_API,
       carrera_nombre: useInstitucionStore().institucion.institucion_nombre,
+      carrera_logo: useInstitucionStore().institucion.institucion_logo,
       text_banner: useInstitucionStore().text_banner,
       carrera_iniciales:
         useInstitucionStore().institucion.institucion_iniciales,
@@ -157,5 +166,43 @@ export default {
   height: 100%;
   background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.7) 80%);
   transform: skew(20deg);
+}
+.icon_admin_logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 200px;
+  position: relative;
+}
+.icon_admin_logo_img1{
+  width: 100%;  
+}
+.icon_admin_logo_img2{
+  position: absolute;
+  bottom: -40px;
+  right: -200px;
+  filter: drop-shadow(10px 0px 10px rgba(0,0,0,.5));
+}
+
+@media (max-width: 968px) {
+  .icon_admin_logo_img1,
+  .icon_admin_logo_img2{
+    width: 50%;  
+  }
+  .icon_admin_logo_img2{
+    right: -50px;
+  }
+}
+
+/* Estilos para dispositivos móviles (pantallas más pequeñas) */
+@media (max-width: 768px) {
+  .icon_admin_logo {
+    display: none; /* Oculta el elemento en dispositivos móviles */
+  }
+
+  /* También puedes anular otros estilos si es necesario */
+  .icon_admin_logo_img2 {
+    display: none; /* Oculta la imagen 2 en dispositivos móviles */
+  }
 }
 </style>

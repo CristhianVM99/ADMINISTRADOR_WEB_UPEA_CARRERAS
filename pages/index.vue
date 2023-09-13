@@ -1,120 +1,6 @@
 <template>
   <div>
-    <!-- controller -->
-    <div
-      v-if="false"
-      class="menu_config"
-      :style="{ left: menuPosition }"
-      id="menu_config"
-    >
-      <button @click="toggleMenu" class="close">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-settings"
-        >
-          <circle cx="12" cy="12" r="3"></circle>
-          <path
-            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-          ></path>
-        </svg>
-      </button>
-      <div class="notificationCard">
-        <p class="notificationHeading">{{ carrera_nombre }}</p>
-        <!--<img style="width: 100px;" :src="url_api + '/InstitucionUpea/' + institucion_logo" alt="">-->
-        <p class="notificationPara">Configuracion de la Pagina</p>
-        <div class="buttonContainer">
-          <!-- autoridades -->
-          <button
-            @click="toggleAutoridades1"
-            :class="mostrarAutoridades1 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Autoridades 1
-          </button>
-          <button
-            @click="toggleAutoridades2"
-            :class="mostrarAutoridades2 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Autoridades 2
-          </button>
-
-          <!-- videos  -->
-          <button
-            @click="toggleVideo1"
-            :class="mostrarVideo1 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Video 1
-          </button>
-          <button
-            @click="toggleVideo2"
-            :class="mostrarVideo2 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Video 2
-          </button>
-
-          <!-- convocatorias -->
-          <button
-            @click="toggleConvocatorias1"
-            :class="mostrarConvocatorias1 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Convocatorias 1
-          </button>
-          <button
-            @click="toggleConvocatorias2"
-            :class="mostrarConvocatorias2 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Convocatorias 2
-          </button>
-          <button
-            @click="toggleConvocatorias3"
-            :class="mostrarConvocatorias3 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Convocatorias 3
-          </button>
-
-          <!-- cursos -->
-          <button
-            @click="toggleCursos1"
-            :class="mostrarCursos1 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Cursos 1
-          </button>
-          <button
-            @click="toggleCursos2"
-            :class="mostrarCursos2 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Cursos 2
-          </button>
-          <button
-            @click="toggleCursos3"
-            :class="mostrarCursos3 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Cursos 3
-          </button>
-
-          <!-- enlaces -->
-          <button
-            @click="toggleEnlaces1"
-            :class="mostrarEnlaces1 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Enlaces 1
-          </button>
-          <button
-            @click="toggleEnlaces2"
-            :class="mostrarEnlaces2 ? 'AllowBtn' : 'NotnowBtn'"
-          >
-            Enlaces 2
-          </button>
-        </div>
-      </div>
-    </div>
+    
     <!-- ============================================================
 
         NAVBAR 
@@ -385,7 +271,7 @@ export default {
       carrera_colores: useInstitucionStore().institucion.colorinstitucion,
       foto: useInstitucionStore().fotosPagina[2],
       carrera_links: useInstitucionStore().carrera_links_externos,
-      index: 1,
+      index: 8,
 
       menuPosition: "-220px",
       isMenuOpen: false,

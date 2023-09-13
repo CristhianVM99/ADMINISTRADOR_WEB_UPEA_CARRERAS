@@ -18,17 +18,18 @@
 
         <div class="col-md-4 col-lg-6">
           <a :href="url_api + '/InstitucionUpea/' + carrera_organigrama">
-            <client-only>
+            <client-only v-if="MostrarPdf">
               <pdf-embed
                 :source="url_api + '/InstitucionUpea/' + carrera_organigrama"
                 :page="1"
-              />
-              <img
-                :src="url_api + '/InstitucionUpea/' + carrera_organigrama"
-                :alt="carrera_organigrama"
-                style="width: 40%; height: 110%"
-              />
+              />                           
             </client-only>
+              <img                
+                v-if="MostrarImagen"
+                :src="url_api + '/InstitucionUpea/' + carrera_organigrama"
+                alt="plan de estudios"
+                style="width: 50%; height: 100%"
+              />
           </a>
         </div>
 
@@ -62,11 +63,19 @@ export default {
       carrera_nombre: useInstitucionStore().institucion.institucion_nombre,
       carrera_iniciales:
         useInstitucionStore().institucion.institucion_iniciales,
+      MostrarPdf: false,
+      MostrarImagen: false,
     };
+  },  
+  methods: {
+    PlanEstudios(){
+      const extension = this.carrera_organigrama.split('.').pop();
+      extension === "pdf" ? this.MostrarPdf = true : this.MostrarImagen = true;      
+    }
   },
-  created() {
-    console.log("organigrama ", this.carrera_organigrama);
-  },
+  created(){
+    this.PlanEstudios()
+  }
 };
 </script>
 
